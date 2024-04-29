@@ -1,0 +1,40 @@
+/*CREATE TABLE marca(codigo_marca serial primary key, nome varchar(40));*/
+/*insert into marca (nome) values ('Hyundai'),
+                                  ('Ford'),
+			          ('Ferrari'),
+				  ('Nissan'),
+				  ('Mercedez-Benz'),
+				  ('Fiat'),
+				  ('Volkswagen'),
+				  ('Kia');*/
+----------------------------------------------------------------------------------
+/*create table modelo(codigo_modelo serial primary key,
+		     escricao varchar(50), preco numeric check(preco > 60000),
+		     codigo_marca smallint, foreign key (codigo_marca) 
+		     references marca(codigo_marca));*/
+-----------------------------------------------------------------------------------					
+/*insert into modelo (descricao,preco,codigo_marca) values('Gol',75000,7);
+insert into modelo (descricao,preco,codigo_marca) values('HB20',72000,1);
+insert into modelo (descricao,preco,codigo_marca) values('HB20S',76000,1);
+insert into modelo (descricao,preco,codigo_marca) values('Marea',76200,5);
+insert into modelo (descricao,preco,codigo_marca) values('Fiesta',73500,2);
+insert into modelo (descricao,preco,codigo_marca) values('Eco Sport',94500,2);
+insert into modelo (descricao,preco,codigo_marca) values('Siena',65000,6);*/
+------------------------------------------------------------------------------------
+select mo.descricao, ma.nome, mo.preco from modelo as mo, marca as ma where 
+ma.codigo_marca = mo.codigo_marca 
+and nome='Hyundai' and mo.preco > 73000
+------------------------------------------------------------------------------------
+order by preco desc
+------------------------------------------------------------------------------------
+CREATE TABLE cliente (codigo_cliente SERIAL PRIMARY KEY, nome VARCHAR(50)NOT NULL,
+		     email VARCHAR(40)NOT NULL UNIQUE, tipo CHAR CHECK (tipo = 'F' or tipo='J'),
+		     data_nascimento DATE);
+------------------------------------------------------------------------------------
+insert into cliente (nome,email,tipo,data_nascimento) values('Luis','l@gmail.com','f','2000-09-06');
+insert into cliente (nome,email,tipo,data_nascimento) values('Mauro','mauro@gmail.com','f','1996-10-05');
+insert into cliente (nome,email,tipo,data_nascimento) values('Mateus','mateus@gmail.com','f','1997-12-30');
+insert into cliente (nome,email,tipo,data_nascimento) values('Rodrigo','rodrigogoes@gmail.com','f','2003-03-03');
+insert into cliente (nome,email,tipo,data_nascimento) values('Petro Ita','petroita@gmail.com','j',null);
+insert into cliente (nome,email,tipo,data_nascimento) values('Cidade Real','cidadereal@gmail.com','j',null);
+insert into cliente (nome,email,tipo,data_nascimento) values('Cinemax','cinemax@gmail.com','j',null);

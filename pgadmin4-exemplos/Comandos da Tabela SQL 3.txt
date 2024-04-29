@@ -1,0 +1,40 @@
+1) Listar o modelo e nome da marca dos carros somente com marca cadastrada
+select mo.descricao, ma.nome, ma.codigo_marca from modelo as mo
+inner join marca as ma on ma.codigo_marca = mo.codigo_marca;
+--------------------------------------------------------------------------
+
+2) Listar o preço medio dos carros
+select round(avg(preco),0) from modelo;
+-----------------------------------------
+
+3) Listar a quantidade total de carros com uma marca cadastrada
+select count(mo.codigo_modelo) from modelo as mo, marca as ma where mo.codigo_marca = ma.codigo_marca
+------------------------------------------------------------------------------------------------------
+
+4) Listar todos os carros inclusive os sem marca
+select mo.descricao, ma.nome, ma.codigo_marca from modelo as mo
+left join marca as ma on ma.codigo_marca = mo.codigo_marca;
+----------------------------------------------------------------
+
+5) Listar a quantidade de carros (modelos) marca fiat
+select count(mo.descricao) from modelo as mo, marca as ma where ma.codigo_marca = mo.codigo_marca and mo.codigo_marca =6;
+
+select count(*) from modelo mo where mo.codigo_marca =6;
+--------------------------------------------------------------------------------------------------------------------------
+
+6) Exibir o carro mais barato
+select min(mo.preco) from modelo as mo;
+
+select min(preco) as valor from modelo mo;
+------------------------------------------
+
+7) Atualizar o preço do modelo HB20S em 10% do valor atual
+update modelo set preco = preco *1.1;
+----------------------------------------------
+
+8) FAZER UPDATE EM DUAS COLUNAS DIFERENTES AO MESMO TEMPO
+UPDATE conta set saldo = case when saldo <= 2000 then saldo + 500
+else saldo + 500
+end;
+
+
